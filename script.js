@@ -7,6 +7,8 @@ let outcome;
 function getPlayerChoice() {
     playerWeapon = prompt("Choose your weapon", "rock, paper, or scissors?");
 
+    playerWeapon = playerWeapon.toLowerCase();
+
     if (playerWeapon !== 'rock' || playerWeapon !== 'paper' || playerWeapon !== 'scissors') {
         ominousMessage = "Choose a proper weapon.";
     }
@@ -65,5 +67,28 @@ function playGame(playerWeapon, computerWeapon) {
         return outcome;
     } else if (playerWeapon !== 'rock' || playerWeapon !== 'paper' || playerWeapon !== 'scissors') {
         return ominousMessage;
+    }
+}
+
+function game() {
+    let computerWins = 0;
+    let playerWins = 0;
+    let draws = 0;
+
+    for (let i = 0; i < 5; i++) {
+        getPlayerChoice();
+        getRandomNumber();
+        getComputerChoice(randomNumber);
+        playGame(playerWeapon, computerWeapon);
+
+        console.log(outcome);
+
+        if (outcome === "Player wins!") {
+            playerWins += playerWins;
+        } else if (outcome === "Computer wins!") {
+            computerWins += computerWins;
+        } else {
+            draws += draws;
+        }
     }
 }
