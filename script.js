@@ -3,6 +3,10 @@ let ominousMessage;
 let randomNumber;
 let computerWeapon;
 let outcome;
+let playerWins = 0;
+let computerWins = 0;
+let draws = 0;
+let showdownResults;
 
 function getPlayerChoice() {
     playerWeapon = prompt("Choose your weapon", "rock, paper, or scissors?");
@@ -71,24 +75,29 @@ function playGame(playerWeapon, computerWeapon) {
 }
 
 function game() {
-    let computerWins = 0;
-    let playerWins = 0;
-    let draws = 0;
-
     for (let i = 0; i < 5; i++) {
         getPlayerChoice();
         getRandomNumber();
         getComputerChoice(randomNumber);
         playGame(playerWeapon, computerWeapon);
-
         console.log(outcome);
 
         if (outcome === "Player wins!") {
-            playerWins += playerWins;
+            playerWins++;
         } else if (outcome === "Computer wins!") {
-            computerWins += computerWins;
-        } else {
-            draws += draws;
+            computerWins++;
+        } else if (outcome === "Tragic. Everyone loses.") {
+            draws++;
         }
     }
+
+    if (draws > 2 || computerWins == playerWins) {
+        showdownResults = "Tragedy. No one wins."
+    } else if (playerWins > computerWins) {
+        showdownResults = "Congats! Player wins it all!";
+    } else if (computerWins > playerWins) {
+        showdownResults = "Ha. Can't even beat the computer.";
+    }
+
+    console.log(`The results are in! ${showdownResults}`);
 }
