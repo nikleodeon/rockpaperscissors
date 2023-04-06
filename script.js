@@ -74,12 +74,15 @@ function playGame(playerWeapon, computerWeapon) {
     }
 }
 
-function clickHandler(event) {
-    console.log('Button Clicked');
+const buttons = document.getElementsByTagName("button");
+
+const buttonPressed = e => {
+    console.log(e.target.id);
 }
 
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', clickHandler);
+for (let button of buttons) {
+    button.addEventListener('click', buttonPressed);
+}
 
 /* function game() {
     for (let i = 0; i < 5; i++) {
