@@ -74,6 +74,13 @@ function playGame(playerWeapon, computerWeapon) {
     }
 }
 
+function clickHandler(event) {
+    console.log('Button Clicked');
+}
+
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', clickHandler);
+
 /* function game() {
     for (let i = 0; i < 5; i++) {
         getPlayerChoice();
