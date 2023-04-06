@@ -74,7 +74,7 @@ function playGame(playerWeapon, computerWeapon) {
     }
 }
 
-function game() {
+/* function game() {
     for (let i = 0; i < 5; i++) {
         getPlayerChoice();
         getRandomNumber();
@@ -100,4 +100,4 @@ function game() {
     }
 
     console.log(`The results are in! ${showdownResults}`);
-}
+} */
