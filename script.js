@@ -8,7 +8,31 @@ let computerWins = 0;
 let draws = 0;
 let showdownResults;
 
-function getPlayerChoice() {
+const buttons = document.getElementsByTagName("button");
+
+function chooseWeapon(e) {
+    if (e.target.id === 'rock') {
+        playerWeapon = 'rock';
+    } else if (e.target.id === 'paper') {
+        playerWeapon = 'paper';
+    } else if (e.target.id === 'scissors') {
+        playerWeapon = 'scissors';
+    }
+
+    return playerWeapon;
+}
+
+function doIKnow() {
+    console.log(playerWeapon + " " + computerWeapon);
+}
+
+for (let button of buttons) {
+    button.addEventListener('click', chooseWeapon);
+    button.addEventListener('click', getComputerChoice);
+    button.addEventListener('click', doIKnow);
+}
+
+/* function getPlayerChoice() {
     playerWeapon = prompt("Choose your weapon", "rock, paper, or scissors?");
 
     playerWeapon = playerWeapon.toLowerCase();
@@ -16,22 +40,22 @@ function getPlayerChoice() {
     if (playerWeapon !== 'rock' || playerWeapon !== 'paper' || playerWeapon !== 'scissors') {
         ominousMessage = "Choose a proper weapon.";
     }
-}
+} */
 
-function getRandomNumber() {
+/* function getRandomNumber() {
     randomNumber = Math.random() * 10;
 
     return randomNumber;
-}
+} */
 
-function getComputerChoice(randomNumber) {
-    computerWeapon = randomNumber;
+function getComputerChoice() {
+    randomNumber = Math.random() * 10;
 
-    if (computerWeapon < 3) {
+    if (randomNumber < 3) {
         computerWeapon = 'rock';
-    } else if (computerWeapon >= 3 && computerWeapon < 6) {
+    } else if (randomNumber >= 3 && randomNumber < 6) {
         computerWeapon = 'paper';
-    } else if (computerWeapon >= 6) {
+    } else if (randomNumber >= 6) {
         computerWeapon = 'scissors';
     }
 
@@ -72,16 +96,6 @@ function playGame(playerWeapon, computerWeapon) {
     } else if (playerWeapon !== 'rock' || playerWeapon !== 'paper' || playerWeapon !== 'scissors') {
         return ominousMessage;
     }
-}
-
-const buttons = document.getElementsByTagName("button");
-
-const buttonPressed = e => {
-    console.log(e.target.id);
-}
-
-for (let button of buttons) {
-    button.addEventListener('click', buttonPressed);
 }
 
 /* function game() {
