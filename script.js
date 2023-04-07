@@ -1,5 +1,4 @@
 let playerWeapon;
-let ominousMessage;
 let randomNumber;
 let computerWeapon;
 let outcome;
@@ -18,18 +17,14 @@ function chooseWeapon(e) {
     } else if (e.target.id === 'scissors') {
         playerWeapon = 'scissors';
     }
-
+    console.log(playerWeapon);
     return playerWeapon;
-}
-
-function doIKnow() {
-    console.log(playerWeapon + " " + computerWeapon);
 }
 
 for (let button of buttons) {
     button.addEventListener('click', chooseWeapon);
     button.addEventListener('click', getComputerChoice);
-    button.addEventListener('click', doIKnow);
+    button.addEventListener('click', playGame);
 }
 
 /* function getPlayerChoice() {
@@ -71,7 +66,6 @@ function playGame(playerWeapon, computerWeapon) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
-
         return outcome;
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
@@ -81,7 +75,6 @@ function playGame(playerWeapon, computerWeapon) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
-
         return outcome;
     } else if (playerWeapon === 'scissors') {
         if (computerWeapon === 'rock') {
@@ -91,10 +84,7 @@ function playGame(playerWeapon, computerWeapon) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
-
         return outcome;
-    } else if (playerWeapon !== 'rock' || playerWeapon !== 'paper' || playerWeapon !== 'scissors') {
-        return ominousMessage;
     }
 }
 
