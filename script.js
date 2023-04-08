@@ -1,15 +1,16 @@
-let playerWeapon;
-let randomNumber;
-let computerWeapon;
 let outcome;
 let playerWins = 0;
 let computerWins = 0;
 let draws = 0;
 let showdownResults;
 
+let playerWeapon;
+let computerWeapon;
+
 const buttons = document.getElementsByTagName("button");
 
-function chooseWeapon(e) {
+function playerChoice(e) {
+
     if (e.target.id === 'rock') {
         playerWeapon = 'rock';
     } else if (e.target.id === 'paper') {
@@ -19,12 +20,6 @@ function chooseWeapon(e) {
     }
     console.log(playerWeapon);
     return playerWeapon;
-}
-
-for (let button of buttons) {
-    button.addEventListener('click', chooseWeapon);
-    button.addEventListener('click', getComputerChoice);
-    button.addEventListener('click', playGame);
 }
 
 /* function getPlayerChoice() {
@@ -43,8 +38,8 @@ for (let button of buttons) {
     return randomNumber;
 } */
 
-function getComputerChoice() {
-    randomNumber = Math.random() * 10;
+function computerChoice(e) {
+    let randomNumber = Math.random() * 10;
 
     if (randomNumber < 3) {
         computerWeapon = 'rock';
@@ -53,11 +48,12 @@ function getComputerChoice() {
     } else if (randomNumber >= 6) {
         computerWeapon = 'scissors';
     }
-
+    console.log(computerWeapon);
     return computerWeapon;
 }
 
-function playGame(playerWeapon, computerWeapon) {
+function winnerWinner(e) {
+    
     if (playerWeapon === 'rock') {
         if (computerWeapon === 'scissors') {
             outcome = "Player wins!";
@@ -66,6 +62,7 @@ function playGame(playerWeapon, computerWeapon) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
+        console.log(outcome);
         return outcome;
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
@@ -75,6 +72,7 @@ function playGame(playerWeapon, computerWeapon) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
+        console.log(outcome);
         return outcome;
     } else if (playerWeapon === 'scissors') {
         if (computerWeapon === 'rock') {
@@ -84,8 +82,15 @@ function playGame(playerWeapon, computerWeapon) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
+        console.log(outcome);
         return outcome;
     }
+}
+
+for (let button of buttons) {
+    button.addEventListener('click', playerChoice);
+    button.addEventListener('click', computerChoice);
+    button.addEventListener('click', winnerWinner);
 }
 
 /* function game() {
