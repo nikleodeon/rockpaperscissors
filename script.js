@@ -53,7 +53,6 @@ function computerChoice(e) {
 }
 
 function winnerWinner(e) {
-    
     if (playerWeapon === 'rock') {
         if (computerWeapon === 'scissors') {
             outcome = "Player wins!";
@@ -62,7 +61,6 @@ function winnerWinner(e) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
-        console.log(outcome);
         return outcome;
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
@@ -72,7 +70,6 @@ function winnerWinner(e) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
-        console.log(outcome);
         return outcome;
     } else if (playerWeapon === 'scissors') {
         if (computerWeapon === 'rock') {
@@ -82,15 +79,19 @@ function winnerWinner(e) {
         } else {
             outcome = "Tragic. Everyone loses."
         }
-        console.log(outcome);
         return outcome;
     }
+}
+
+function changeText(e) {
+    document.getElementById('winner').innerText = `${outcome}`;
 }
 
 for (let button of buttons) {
     button.addEventListener('click', playerChoice);
     button.addEventListener('click', computerChoice);
     button.addEventListener('click', winnerWinner);
+    button.addEventListener('click', changeText);
 }
 
 /* function game() {
