@@ -10,6 +10,15 @@ let computerWeapon;
 let count = 0;
 let roundCount = document.getElementById("roundcount");
 
+let playerScore = 0;
+let playerCount = document.getElementById("playerscore");
+
+let computerScore = 0;
+let computerCount = document.getElementById("computerscore");
+
+let score = document.getElementById('winner');
+let scoreString = score.textContent;
+
 const buttons = document.getElementsByTagName("button");
 
 function playerChoice(e) {
@@ -41,18 +50,6 @@ function changeText(string) {
     document.getElementById('winner').innerText = string;
 }
 
-function gameIncrement() {
-    if (count === 5) {
-        button.removeEventListener('click', playerChoice);
-        button.removeEventListener('click', computerChoice);
-        button.removeEventListener('click', winnerWinner);
-        button.removeEventListener('click', gameIncrement);
-    } else {
-        count++;
-        roundCount.innerText = count;
-    }
-}
-
 function winnerWinner(e) {
     if (playerWeapon === 'rock') {
         if (computerWeapon === 'scissors') {
@@ -62,7 +59,6 @@ function winnerWinner(e) {
         } else {
             changeText('Tragic. Everyone loses.');
         }
-        return outcome;
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
             changeText('Player wins!');
@@ -82,16 +78,36 @@ function winnerWinner(e) {
     }
 }
 
-/* function countGame() {
-    let increment = document.getElementById('roundcount');
-    increment += increment.innerText;
-} */
-
 for (let button of buttons) {
     button.addEventListener('click', playerChoice);
     button.addEventListener('click', computerChoice);
     button.addEventListener('click', gameIncrement);
     button.addEventListener('click', winnerWinner);
+    button.addEventListener('click', scoreCard);
+}
+
+function scoreCard() {
+    scoreString = score.innerText;
+    if (scoreString === 'Player wins!') {
+        playerScore++;
+        playerCount.innerText = playerScore;
+    } else if (scoreString === 'Computer wins!') {
+        computerScore++;
+        computerCount.innerText = computerScore;
+    }
+}
+
+function gameIncrement() {
+    if (count === 4 ) {
+        count++;
+        roundCount.innerText = count;
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true;
+    } else {
+        count++;
+        roundCount.innerText = count;
+    }
 }
 
 /* function getPlayerChoice() {
