@@ -7,6 +7,9 @@ let showdownResults;
 let playerWeapon;
 let computerWeapon;
 
+let count = 0;
+let roundCount = document.getElementById("roundcount");
+
 const buttons = document.getElementsByTagName("button");
 
 function playerChoice(e) {
@@ -18,7 +21,6 @@ function playerChoice(e) {
     } else if (e.target.id === 'scissors') {
         playerWeapon = 'scissors';
     }
-    console.log(playerWeapon);
     return playerWeapon;
 }
 
@@ -32,12 +34,23 @@ function computerChoice(e) {
     } else if (randomNumber >= 6) {
         computerWeapon = 'scissors';
     }
-    console.log(computerWeapon);
     return computerWeapon;
 }
 
 function changeText(string) {
     document.getElementById('winner').innerText = string;
+}
+
+function gameIncrement() {
+    if (count === 5) {
+        button.removeEventListener('click', playerChoice);
+        button.removeEventListener('click', computerChoice);
+        button.removeEventListener('click', winnerWinner);
+        button.removeEventListener('click', gameIncrement);
+    } else {
+        count++;
+        roundCount.innerText = count;
+    }
 }
 
 function winnerWinner(e) {
@@ -46,43 +59,38 @@ function winnerWinner(e) {
             changeText('Player wins!');
         } else if (computerWeapon === 'paper'){
             changeText('Computer  wins!');
-            outcome = "Computer wins!";
         } else {
             changeText('Tragic. Everyone loses.');
-            outcome = "Tragic. Everyone loses."
         }
         return outcome;
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
             changeText('Player wins!');
-            outcome = "Player wins!";
         } else if (computerWeapon === 'scissors') {
             changeText('Computer  wins!');
-            outcome = "Computer wins!";
         } else {
             changeText('Tragic. Everyone loses.');
-            outcome = "Tragic. Everyone loses."
         }
-        return outcome;
-        changeText(outcome);
     } else if (playerWeapon === 'scissors') {
         if (computerWeapon === 'rock') {
             changeText('Computer  wins!');
-            outcome = "Computer wins!";
         } else if (computerWeapon === 'paper') {
             changeText('Player wins!');
-            outcome = "Player wins!";
         } else {
             changeText('Tragic. Everyone loses.');
-            outcome = "Tragic. Everyone loses.";
         }
-        return outcome;
     }
 }
+
+/* function countGame() {
+    let increment = document.getElementById('roundcount');
+    increment += increment.innerText;
+} */
 
 for (let button of buttons) {
     button.addEventListener('click', playerChoice);
     button.addEventListener('click', computerChoice);
+    button.addEventListener('click', gameIncrement);
     button.addEventListener('click', winnerWinner);
 }
 
