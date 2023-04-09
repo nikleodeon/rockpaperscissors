@@ -104,10 +104,17 @@ function gameIncrement() {
         document.getElementById("rock").disabled = true;
         document.getElementById("paper").disabled = true;
         document.getElementById("scissors").disabled = true;
+        whoWon();
     } else {
         count++;
         roundCount.innerText = count;
     }
+}
+
+function whoWon() {
+    const element = document.getElementById('finalWinner');
+    element.innerText = "Winner";
+
 }
 
 /* function getPlayerChoice() {
