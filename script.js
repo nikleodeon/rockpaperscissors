@@ -1,9 +1,3 @@
-let outcome;
-let playerWins = 0;
-let computerWins = 0;
-let draws = 0;
-let showdownResults;
-
 let playerWeapon;
 let computerWeapon;
 
@@ -18,6 +12,8 @@ let computerCount = document.getElementById("computerscore");
 
 let score = document.getElementById('winner');
 let scoreString = score.textContent;
+
+let finalWinnerName;
 
 const buttons = document.getElementsByTagName("button");
 
@@ -112,51 +108,13 @@ function gameIncrement() {
 }
 
 function whoWon() {
+    if (playerScore > computerScore) {
+        finalWinnerName = "Player won the world!";
+    } else if (computerScore > playerScore) {
+        finalWinnerName = "The computer always wins!";
+    } else if (computerScore === playerScore) {
+        finalWinnerName = "Nobody wins!";
+    }
     const element = document.getElementById('finalWinner');
-    element.innerText = "Winner";
-
+    element.innerText = finalWinnerName;
 }
-
-/* function getPlayerChoice() {
-    playerWeapon = prompt("Choose your weapon", "rock, paper, or scissors?");
-
-    playerWeapon = playerWeapon.toLowerCase();
-
-    if (playerWeapon !== 'rock' || playerWeapon !== 'paper' || playerWeapon !== 'scissors') {
-        ominousMessage = "Choose a proper weapon.";
-    }
-} */
-
-/* function getRandomNumber() {
-    randomNumber = Math.random() * 10;
-
-    return randomNumber;
-} */
-
-/*
-
-function game() {
-    for (let i = 0; i < 5; i++) {
-        playerChoice;
-        computerChoice;
-        winnerWinner;
-
-        if (outcome === "Player wins!") {
-            playerWins++;
-        } else if (outcome === "Computer wins!") {
-            computerWins++;
-        } else if (outcome === "Tragic. Everyone loses.") {
-            draws++;
-        }
-    }
-
-    if (draws > 2 || computerWins == playerWins) {
-        showdownResults = "Tragedy. No one wins."
-    } else if (playerWins > computerWins) {
-        showdownResults = "Congats! Player wins it all!";
-    } else if (computerWins > playerWins) {
-        showdownResults = "Ha. Can't even beat the computer.";
-    }
-
-    console.log(`The results are in! ${showdownResults}`);
-} */
