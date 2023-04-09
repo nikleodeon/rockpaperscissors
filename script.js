@@ -22,6 +22,70 @@ function playerChoice(e) {
     return playerWeapon;
 }
 
+function computerChoice(e) {
+    let randomNumber = Math.random() * 10;
+
+    if (randomNumber < 3) {
+        computerWeapon = 'rock';
+    } else if (randomNumber >= 3 && randomNumber < 6) {
+        computerWeapon = 'paper';
+    } else if (randomNumber >= 6) {
+        computerWeapon = 'scissors';
+    }
+    console.log(computerWeapon);
+    return computerWeapon;
+}
+
+function changeText(string) {
+    document.getElementById('winner').innerText = string;
+}
+
+function winnerWinner(e) {
+    if (playerWeapon === 'rock') {
+        if (computerWeapon === 'scissors') {
+            changeText('Player wins!');
+        } else if (computerWeapon === 'paper'){
+            changeText('Computer  wins!');
+            outcome = "Computer wins!";
+        } else {
+            changeText('Tragic. Everyone loses.');
+            outcome = "Tragic. Everyone loses."
+        }
+        return outcome;
+    } else if (playerWeapon === 'paper') {
+        if (computerWeapon === 'rock') {
+            changeText('Player wins!');
+            outcome = "Player wins!";
+        } else if (computerWeapon === 'scissors') {
+            changeText('Computer  wins!');
+            outcome = "Computer wins!";
+        } else {
+            changeText('Tragic. Everyone loses.');
+            outcome = "Tragic. Everyone loses."
+        }
+        return outcome;
+        changeText(outcome);
+    } else if (playerWeapon === 'scissors') {
+        if (computerWeapon === 'rock') {
+            changeText('Computer  wins!');
+            outcome = "Computer wins!";
+        } else if (computerWeapon === 'paper') {
+            changeText('Player wins!');
+            outcome = "Player wins!";
+        } else {
+            changeText('Tragic. Everyone loses.');
+            outcome = "Tragic. Everyone loses.";
+        }
+        return outcome;
+    }
+}
+
+for (let button of buttons) {
+    button.addEventListener('click', playerChoice);
+    button.addEventListener('click', computerChoice);
+    button.addEventListener('click', winnerWinner);
+}
+
 /* function getPlayerChoice() {
     playerWeapon = prompt("Choose your weapon", "rock, paper, or scissors?");
 
@@ -38,69 +102,13 @@ function playerChoice(e) {
     return randomNumber;
 } */
 
-function computerChoice(e) {
-    let randomNumber = Math.random() * 10;
+/*
 
-    if (randomNumber < 3) {
-        computerWeapon = 'rock';
-    } else if (randomNumber >= 3 && randomNumber < 6) {
-        computerWeapon = 'paper';
-    } else if (randomNumber >= 6) {
-        computerWeapon = 'scissors';
-    }
-    console.log(computerWeapon);
-    return computerWeapon;
-}
-
-function winnerWinner(e) {
-    if (playerWeapon === 'rock') {
-        if (computerWeapon === 'scissors') {
-            outcome = "Player wins!";
-        } else if (computerWeapon === 'paper'){
-            outcome = "Computer wins!";
-        } else {
-            outcome = "Tragic. Everyone loses."
-        }
-        return outcome;
-    } else if (playerWeapon === 'paper') {
-        if (computerWeapon === 'rock') {
-            outcome = "Player wins!";
-        } else if (computerWeapon === 'scissors') {
-            outcome = "Computer wins!";
-        } else {
-            outcome = "Tragic. Everyone loses."
-        }
-        return outcome;
-    } else if (playerWeapon === 'scissors') {
-        if (computerWeapon === 'rock') {
-            outcome = "Computer wins!";
-        } else if (computerWeapon === 'paper') {
-            outcome = "Player wins!";
-        } else {
-            outcome = "Tragic. Everyone loses."
-        }
-        return outcome;
-    }
-}
-
-function changeText(e) {
-    document.getElementById('winner').innerText = `${outcome}`;
-}
-
-for (let button of buttons) {
-    button.addEventListener('click', playerChoice);
-    button.addEventListener('click', computerChoice);
-    button.addEventListener('click', winnerWinner);
-    button.addEventListener('click', changeText);
-}
-
-/* function game() {
+function game() {
     for (let i = 0; i < 5; i++) {
-        getPlayerChoice();
-        getRandomNumber();
-        getComputerChoice(randomNumber);
-        playGame(playerWeapon, computerWeapon);
-        console.log(outcome);
+        playerChoice;
+        computerChoice;
+        winnerWinner;
 
         if (outcome === "Player wins!") {
             playerWins++;
