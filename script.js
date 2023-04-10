@@ -1,3 +1,4 @@
+let domDefault = document.body.innerText;
 let playerWeapon;
 let computerWeapon;
 
@@ -15,7 +16,9 @@ let scoreString = score.textContent;
 
 let finalWinnerName;
 
-const buttons = document.getElementsByTagName("button");
+let playAgainButton = document.getElementById("playagainbutton");
+
+const buttons = document.getElementsByClassName("btn");
 
 function playerChoice(e) {
 
@@ -105,6 +108,25 @@ function whoWon() {
     element.innerText = finalWinnerName;
 }
 
+function resetGame(e) {
+    playerWeapon = '';
+    computerWeapon = '';
+
+    count = 0;
+    roundCount = document.getElementById("roundcount");
+
+    playerScore = 0;
+    playerCount = document.getElementById("playerscore");
+
+    computerScore = 0;
+    computerCount = document.getElementById("computerscore");
+
+    score = document.getElementById('winner');
+    scoreString = score.textContent;
+
+    finalWinnerName = "Final Winner";
+}
+
 function gameIncrement() {
     if (count === 4 ) {
         count++;
@@ -114,6 +136,7 @@ function gameIncrement() {
         document.getElementById("paper").disabled = true;
         document.getElementById("scissors").disabled = true;
         document.getElementById("playagainbutton").disabled = false;
+        button.addEventListener('click', resetGame);
     } else {
         count++;
         roundCount.innerText = count;
