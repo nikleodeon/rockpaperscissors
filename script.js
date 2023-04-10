@@ -51,25 +51,25 @@ function winnerWinner(e) {
         if (computerWeapon === 'scissors') {
             changeText('Player wins!');
         } else if (computerWeapon === 'paper'){
-            changeText('Computer  wins!');
-        } else {
-            changeText('Tragic. Everyone loses.');
+            changeText('Computer wins!');
+        } else if (computerWeapon === 'rock') {
+            changeText('Tragic. We all lose in the game of rps');
         }
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
             changeText('Player wins!');
         } else if (computerWeapon === 'scissors') {
-            changeText('Computer  wins!');
-        } else {
-            changeText('Tragic. Everyone loses.');
+            changeText('Computer wins!');
+        } else if (computerWeapon === 'paper') {
+            changeText('Tragic. We all lose in the game of rps');
         }
     } else if (playerWeapon === 'scissors') {
         if (computerWeapon === 'rock') {
-            changeText('Computer  wins!');
+            changeText('Computer wins!');
         } else if (computerWeapon === 'paper') {
             changeText('Player wins!');
-        } else {
-            changeText('Tragic. Everyone loses.');
+        } else if (computerWeapon === 'scissors') {
+            changeText('Tragic. We all lose in the game of rps');
         }
     }
 }
@@ -77,9 +77,9 @@ function winnerWinner(e) {
 for (let button of buttons) {
     button.addEventListener('click', playerChoice);
     button.addEventListener('click', computerChoice);
-    button.addEventListener('click', gameIncrement);
     button.addEventListener('click', winnerWinner);
     button.addEventListener('click', scoreCard);
+    button.addEventListener('click', gameIncrement);
 }
 
 function scoreCard() {
@@ -93,28 +93,29 @@ function scoreCard() {
     }
 }
 
+function whoWon() {
+    if (computerScore === playerScore) {
+        finalWinnerName = "Nobody wins!";
+    } else if (computerScore > playerScore) {
+        finalWinnerName = "The computer always wins!";
+    } else if (playerScore > computerScore) {
+        finalWinnerName = "Player won the world!";
+    }
+    const element = document.getElementById('finalWinner');
+    element.innerText = finalWinnerName;
+}
+
 function gameIncrement() {
     if (count === 4 ) {
         count++;
         roundCount.innerText = count;
+        whoWon();
         document.getElementById("rock").disabled = true;
         document.getElementById("paper").disabled = true;
         document.getElementById("scissors").disabled = true;
-        whoWon();
+        document.getElementById("playagainbutton").disabled = false;
     } else {
         count++;
         roundCount.innerText = count;
     }
-}
-
-function whoWon() {
-    if (playerScore > computerScore) {
-        finalWinnerName = "Player won the world!";
-    } else if (computerScore > playerScore) {
-        finalWinnerName = "The computer always wins!";
-    } else if (computerScore === playerScore) {
-        finalWinnerName = "Nobody wins!";
-    }
-    const element = document.getElementById('finalWinner');
-    element.innerText = finalWinnerName;
 }
