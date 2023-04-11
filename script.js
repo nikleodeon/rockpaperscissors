@@ -1,4 +1,3 @@
-let domDefault = document.body.innerText;
 let playerWeapon;
 let computerWeapon;
 
@@ -19,6 +18,14 @@ let finalWinnerName;
 let playAgainButton = document.getElementById("playagainbutton");
 
 const buttons = document.getElementsByClassName("btn");
+
+for (let button of buttons) {
+    button.addEventListener('click', playerChoice);
+    button.addEventListener('click', computerChoice);
+    button.addEventListener('click', winnerWinner);
+    button.addEventListener('click', scoreCard);
+    button.addEventListener('click', gameIncrement);
+}
 
 function playerChoice(e) {
 
@@ -75,14 +82,6 @@ function winnerWinner(e) {
             changeText('Tragic. We all lose in the game of rps');
         }
     }
-}
-
-for (let button of buttons) {
-    button.addEventListener('click', playerChoice);
-    button.addEventListener('click', computerChoice);
-    button.addEventListener('click', winnerWinner);
-    button.addEventListener('click', scoreCard);
-    button.addEventListener('click', gameIncrement);
 }
 
 function scoreCard() {
@@ -155,4 +154,12 @@ function gameIncrement() {
         count++;
         roundCount.innerText = count;
     }
+}
+
+function hoverColor() {
+    item.setAttribute("style", "background-color:blue;");
+}
+
+function noHoverColor() {
+    item.setAttribute("style", "background-color:grey;");
 }
