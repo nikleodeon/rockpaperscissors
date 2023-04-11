@@ -96,6 +96,42 @@ function scoreCard() {
     }
 }
 
+function resetGame(e) {
+    playerWeapon = '';
+    computerWeapon = '';
+
+    count = 0;
+    document.getElementById('roundcount').innerText = count;
+
+    playerScore = 0;
+    document.getElementById('playerscore').innerText = playerScore;
+    playerCount = document.getElementById("playerscore");
+
+    computerScore = 0;
+    document.getElementById('computerscore').innerText = computerScore;
+    computerCount = document.getElementById('computerscore');
+
+    score = document.getElementById('winner');
+    scoreString = '';
+
+    document.getElementById('finalwinner').innerText = "Final Winner";
+    enableButtons();
+}
+
+function changeButtons() {
+    document.getElementById("rock").disabled = true;
+    document.getElementById("paper").disabled = true;
+    document.getElementById("scissors").disabled = true;
+    document.getElementById("playagainbutton").disabled = false;
+}
+
+function enableButtons() {
+    document.getElementById("rock").disabled = false;
+    document.getElementById("paper").disabled = false;
+    document.getElementById("scissors").disabled = false;
+    document.getElementById("playagainbutton").disabled = true;
+}
+
 function whoWon() {
     if (computerScore === playerScore) {
         finalWinnerName = "Nobody wins!";
@@ -104,27 +140,10 @@ function whoWon() {
     } else if (playerScore > computerScore) {
         finalWinnerName = "Player won the world!";
     }
-    const element = document.getElementById('finalWinner');
+    const element = document.getElementById('finalwinner');
     element.innerText = finalWinnerName;
-}
-
-function resetGame(e) {
-    playerWeapon = '';
-    computerWeapon = '';
-
-    count = 0;
-    roundCount = document.getElementById("roundcount");
-
-    playerScore = 0;
-    playerCount = document.getElementById("playerscore");
-
-    computerScore = 0;
-    computerCount = document.getElementById("computerscore");
-
-    score = document.getElementById('winner');
-    scoreString = score.textContent;
-
-    finalWinnerName = "Final Winner";
+    changeButtons();
+    playAgainButton.addEventListener('click', resetGame);
 }
 
 function gameIncrement() {
@@ -132,11 +151,6 @@ function gameIncrement() {
         count++;
         roundCount.innerText = count;
         whoWon();
-        document.getElementById("rock").disabled = true;
-        document.getElementById("paper").disabled = true;
-        document.getElementById("scissors").disabled = true;
-        document.getElementById("playagainbutton").disabled = false;
-        button.addEventListener('click', resetGame);
     } else {
         count++;
         roundCount.innerText = count;
