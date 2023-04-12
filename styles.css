@@ -1,20 +1,30 @@
 body {
     padding: 0;
     margin: 0;
+    background-color: #F0F0F0;
 }
 
 h1 {
     text-align: center;
+    background-color: #3C486B;
+    width: max-content;
+    margin: 2%  auto;
+    padding: 20px;
+    border-radius: 10px;
+    color: #F0F0F0;
 }
 
 .buttondiv {
-    width: max-content;
+    width: 490px;
     margin: 0 auto;
+    padding: 20px;
+    background-color: #F45050;
+    border-radius: 10px;
 }
 
 .playagain {
     width: max-content;
-    margin: 0 auto;
+    margin: 20px auto 0;
 }
 
 .results {
@@ -22,12 +32,14 @@ h1 {
 }
 
 button {
+    background-color: white;
     padding: 0;
-    margin: 0;
+    margin: 0 30px;
     width: 100px;
     height: 100px;
     border: none;
     border-radius: 50%;
+    transition: transform .7s ease-in-out;
 }
 
 button > * {
@@ -35,9 +47,46 @@ button > * {
 }
 
 button:hover {
-    background-color: pink;
+    background-color: #F9D949;
+    transform: rotate(360deg);
+}
+
+.btn:hover {
+    transform: rotate(360deg);
+}
+
+button:disabled {
+    opacity: 0.4;
 }
     
 img {
     width: 50%;
+}
+
+.scores {
+    font-size: 20px;
+}
+
+img#peopleicon {
+    width: 40%;
+}
+
+img#computericon {
+    width: 40%;
+}
+
+.player {
+    width: 150px;
+    padding: 10px;
+    display: inline-block;
+    background-color: #3C486B;
+    border-radius: 30%;
+}
+
+.computer {
+    width: 150px;
+    padding: 10px;
+    display: inline-block;
+    background-color: #F45050;
+    border-radius: 30%;
 }

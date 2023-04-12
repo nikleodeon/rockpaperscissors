@@ -10,23 +10,29 @@
 </head>
 <body>
     <h1>The Ultimate Showdown</h1>
-    <div class="buttondiv">
-        <button class="btn" id="rock"><img src="images/coal.png" alt="rock"></button>
-        <button class="btn" id="paper"><img src="images/file.png" alt="paper"></button>
-        <button class="btn" id="scissors"><img src="images/cut.png"></button>
-    </div>
 
     <div class="results">
-        <p>Best of five?</p>
-        <p id="winner">Who will win?</p>
-        <p>Player Score <span id="playerscore">0</span></p>
-        <p>Computer Score <span id="computerscore">0</span></p>
-        <p>Rounds <span id="roundcount">0</span>/5</p>
-        <p id="finalwinner">Final Winner</p>
-    </div>
-
-    <div class="playagain">
-        <button id="playagainbutton" disabled>Would you like to play again?</button>
+        <h2 id="winner">Who will win?</h2>
+        <div class="rounds">
+            <h3><span id="roundcount">0</span>/5</h3>
+        </div>
+        <div class="scores">
+            <div class="player">
+                <p><img src="images/people.png" alt="people" id="peopleicon"><br><span id="playerscore">0</span></p>
+            </div>
+            <div class="computer">
+                <p><img src="images/computer.png" alt="computer" id="computericon"><br><span id="computerscore">0</span></p>
+            </div>
+        </div>
+        <h1 id="finalwinner">Who will reign supreme?</h1>
+        <div class="buttondiv">
+            <button class="btn" id="rock"><img src="images/coal.png" alt="rock"></button>
+            <button class="btn" id="paper"><img src="images/file.png" alt="paper"></button>
+            <button class="btn" id="scissors"><img src="images/cut.png" alt="scissors"></button>
+            <div class="playagain">
+                <button id="playagainbutton" disabled><img src="images/play-button.png" alt="video play button"></button>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

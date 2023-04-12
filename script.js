@@ -63,7 +63,7 @@ function winnerWinner(e) {
         } else if (computerWeapon === 'paper'){
             changeText('Computer wins!');
         } else if (computerWeapon === 'rock') {
-            changeText('Tragic. We all lose in the game of rps');
+            changeText('D R A W !');
         }
     } else if (playerWeapon === 'paper') {
         if (computerWeapon === 'rock') {
@@ -71,7 +71,7 @@ function winnerWinner(e) {
         } else if (computerWeapon === 'scissors') {
             changeText('Computer wins!');
         } else if (computerWeapon === 'paper') {
-            changeText('Tragic. We all lose in the game of rps');
+            changeText('D R A W !');
         }
     } else if (playerWeapon === 'scissors') {
         if (computerWeapon === 'rock') {
@@ -79,7 +79,7 @@ function winnerWinner(e) {
         } else if (computerWeapon === 'paper') {
             changeText('Player wins!');
         } else if (computerWeapon === 'scissors') {
-            changeText('Tragic. We all lose in the game of rps');
+            changeText('D R A W !');
         }
     }
 }
@@ -113,7 +113,7 @@ function resetGame(e) {
     score = document.getElementById('winner');
     scoreString = '';
 
-    document.getElementById('finalwinner').innerText = "Final Winner";
+    document.getElementById('finalwinner').innerText = "Who will reign supreme?";
     enableButtons();
 }
 
@@ -137,7 +137,7 @@ function whoWon() {
     } else if (computerScore > playerScore) {
         finalWinnerName = "The computer always wins!";
     } else if (playerScore > computerScore) {
-        finalWinnerName = "Player won the world!";
+        finalWinnerName = "Player wins it all!";
     }
     const element = document.getElementById('finalwinner');
     element.innerText = finalWinnerName;
@@ -154,12 +154,4 @@ function gameIncrement() {
         count++;
         roundCount.innerText = count;
     }
-}
-
-function hoverColor() {
-    item.setAttribute("style", "background-color:blue;");
-}
-
-function noHoverColor() {
-    item.setAttribute("style", "background-color:grey;");
 }
